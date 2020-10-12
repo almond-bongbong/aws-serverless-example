@@ -6,14 +6,15 @@ exports.handler = async (event) => {
   console.log('Received : ', JSON.stringify(event, null, 2));
 
   try {
-    const request = documentClient.scan({ TableName: TABLE_NAME });
-    const cards = await request.promise();
-    console.log(cards);
+    const id = event.pathParameters.id;
+    const result = await documentClient.delete({
+      TableName: TABLE_NAME,
+      Key: { id },
+    }).promise();
 
-    return {
-      statusCode: 200,
-      body: JSON.stringify(cards),
-    };
+    console.log('Result : ', JSON.stringify(result));
+
+    return { statusCode: 200 };
   } catch (e) {
     console.error(e);
     return {
