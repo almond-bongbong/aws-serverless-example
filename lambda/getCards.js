@@ -12,12 +12,14 @@ exports.handler = async (event) => {
 
     return {
       statusCode: 200,
+      headers: { 'Access-Control-Allow-Origin': '*' },
       body: JSON.stringify(cards),
     };
   } catch (e) {
     console.error(e);
     return {
       statusCode: 500,
+      headers: { 'Access-Control-Allow-Origin': '*' },
       body: JSON.stringify({
         Message: e,
       }),
