@@ -26,7 +26,7 @@ exports.handler = async (event) => {
     console.log('Result : ', JSON.stringify(result));
 
     return {
-      statusCode: 200,
+      statusCode: 204,
       headers: { 'Access-Control-Allow-Origin': '*' },
     };
   } catch (e) {
